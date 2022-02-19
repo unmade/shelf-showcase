@@ -1,0 +1,58 @@
+services:
+  shelf-back:
+    image: fdooch/shelf-back:0.1.0-alpha.1
+    env_file:
+      - ./.shelf-back.env
+    environment:
+      - SHELF_SUPERUSER_USERNAME=unmade
+      - SHELF_SUPERUSER_PASSWORD=root
+    volumes:
+      - ./certs:/usr/src/shelf-back/certs
+      - ./shelf-data:/usr/src/shelf-data
+    ports:
+      - "8000:80"
+    depends_on:
+      - redis
+      - edgedb
+
+  shelf-worker:
+    image: fdooch/shelf-back:0.1.0-alpha.1
+    env_file:
+      - ./.shelf-back.env
+    volumes:
+      - ./certs:/usr/src/shelf-back/certs
+      - ./shelf-data:/usr/src/shelf-data
+    command: ["celery", "-A", "app.tasks", "worker", "-l", "INFO"]
+    depends_on:
+      - edgedb
+      - redis
+
+  shelf-front:
+    image: fdooch/shelf-front:0.1.0-alpha.1
+    environment:
+      - API_BASE_URL=http://localhost:8000
+    ports:
+      - "8080:80"
+    depends_on:
+      - shelf-back
+
+  edgedb:
+    image: edgedb/edgedb:1
+    environment:
+      - EDGEDB_SERVER_USER=edgedb
+      - EDGEDB_PASSWORD=root
+      - EDGEDB_SERVER_TLS_CERT_FILE=/certs/edbtlscert.dev.pem
+      - EDGEDB_SERVER_TLS_KEY_FILE=/certs/edbprivkey.dev.pem
+    volumes:
+      - dbvolume:/var/lib/edgedb/data
+      - ./certs:/certs
+    ports:
+      - "5656:5656"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  dbvolume: {}
