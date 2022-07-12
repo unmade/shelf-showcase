@@ -2,7 +2,7 @@
 
 An example of ready-to-run docker-compose for the Shelf App
 
-<img src="https://i.imgur.com/h1QQIFp.png" alt="shelf-main" width="1379" alt="App Preview">
+<img src="https://i.imgur.com/d8mFhAi.png" alt="shelf-main" width="1379" alt="App Preview">
 
 ## Quickstart
 
@@ -21,8 +21,8 @@ http://localhost:8080
 By default there is a superuser created when you run the project for the first
 time with the default credentials:
 
-- username: admin
-- password: root
+- username: **admin**
+- password: **root**
 
 ## Re-indexing existing file in the storage
 
