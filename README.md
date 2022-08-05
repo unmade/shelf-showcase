@@ -2,7 +2,7 @@
 
 An example of ready-to-run docker-compose for the Shelf App
 
-<img src="https://i.imgur.com/d8mFhAi.png" alt="shelf-main" width="1379" alt="App Preview">
+<img src="https://i.imgur.com/GJF6meP.png" alt="shelf-main" width="1379" alt="App Preview">
 
 ## Quickstart
 
