@@ -2,17 +2,17 @@
 
 An example of ready-to-run docker-compose for the Shelf App
 
-<img src="https://i.imgur.com/GJF6meP.png" alt="shelf-main" width="1379" alt="App Preview">
+<img src="https://i.imgur.com/5aDuEfY.png" alt="shelf-main" width="1379" alt="App Preview">
 
 ## Quickstart
 
-To start the aplpication simply run:
+To start the application simply run:
 
 ```bash
 docker compose up
 ```
 
-Then open in your browser:
+Then open it in your browser:
 
 ```bash
 http://localhost:8080
@@ -23,6 +23,11 @@ time with the default credentials:
 
 - username: **admin**
 - password: **root**
+
+You can find more in the following repo:
+
+- [https://github.com/unmade/shelf-back](https://github.com/unmade/shelf-back)
+- [https://github.com/unmade/shelf-front](https://github.com/unmade/shelf-front)
 
 ## Re-indexing existing file in the storage
 
