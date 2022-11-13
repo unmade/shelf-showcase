@@ -2,9 +2,9 @@
 
 An example of ready-to-run docker-compose for the Shelf App
 
-<img src="https://i.imgur.com/VPREFxb.png" alt="shelf-main" width="1379" alt="App Preview Light Theme" loading="eager">
+![App Preview Light Theme](https://i.imgur.com/VPREFxb.png#gh-light-mode-only)
 
-<img src="https://i.imgur.com/4A8XD0P.png" alt="shelf-main" width="1379" alt="App Preview Dark Theme" loading="lazy">
+![App Preview Dark Theme](https://i.imgur.com/4A8XD0P.png#gh-dark-mode-only)
 
 ## Quickstart
 
