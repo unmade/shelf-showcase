@@ -2,7 +2,9 @@
 
 An example of ready-to-run docker-compose for the Shelf App
 
-<img src="https://i.imgur.com/5aDuEfY.png" alt="shelf-main" width="1379" alt="App Preview">
+<img src="https://i.imgur.com/VPREFxb.png" alt="shelf-main" width="1379" alt="App Preview Light Theme" loading="eager">
+
+<img src="https://i.imgur.com/4A8XD0P.png" alt="shelf-main" width="1379" alt="App Preview Dark Theme" loading="lazy">
 
 ## Quickstart
 
@@ -18,6 +20,10 @@ Then open it in your browser:
 http://localhost:8080
 ```
 
+> If you're running it on the remote machine consider to update `API_BASE_URL`
+> in the [docker-compose.yml](./docker-compose.yml) from localhost to the LAN IP
+> of your docker host.
+
 By default there is a superuser created when you run the project for the first
 time with the default credentials:
 
@@ -31,7 +37,7 @@ You can find more in the following repo:
 
 ## Re-indexing existing file in the storage
 
-Sometime it is easier to put lots of file into the storage and then reindex
+Sometime it is easier to put all your files into the storage and then reindex
 them instead of manually uploading via web.
 
 In order to do so, first put the files into corresponding user folder in the storage.
@@ -40,5 +46,12 @@ For example, if you have a user `admin`, then put files into `./shelf-data/admin
 After that run the command:
 
 ```bash
-docker compose exec shelf-back python manage.py reconcile <username>
+docker compose exec shelf-back python manage.py reindex <username>
+docker compose exec shelf-back python manage.py reindex-content <username>
 ```
+
+The first command will simply add all files in the storage to the database, so
+you'll see them on the UI as soon as possible.
+
+The second command extract some metadata, such as EXIF, from target files. It
+can take some, especially if you have lots of media files.
