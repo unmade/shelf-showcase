@@ -1,6 +1,6 @@
 services:
   shelf-back:
-    image: fdooch/shelf-back:0.1.0-alpha.7
+    image: fdooch/shelf-back:0.1.0-alpha.8
     env_file:
       - ./.shelf-back.env
     environment:
@@ -16,7 +16,7 @@ services:
       - edgedb
 
   shelf-worker:
-    image: fdooch/shelf-back:0.1.0-alpha.7
+    image: fdooch/shelf-back:0.1.0-alpha.8
     env_file:
       - ./.shelf-back.env
     volumes:
@@ -28,7 +28,7 @@ services:
       - redis
 
   shelf-front:
-    image: fdooch/shelf-front:0.1.0-alpha.8
+    image: fdooch/shelf-front:0.1.0-alpha.9
     environment:
       - API_BASE_URL=http://localhost:8000
     ports:
