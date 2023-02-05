@@ -28,7 +28,7 @@ services:
       - redis
 
   shelf-front:
-    image: fdooch/shelf-front:0.1.0-alpha.12
+    image: fdooch/shelf-front:0.1.0-alpha.13
     environment:
       - API_BASE_URL=http://localhost:8000
     ports:
