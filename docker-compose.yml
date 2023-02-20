@@ -1,6 +1,6 @@
 services:
   shelf-back:
-    image: fdooch/shelf-back:0.1.0-alpha.11
+    image: fdooch/shelf-back:0.1.0-alpha.12
     env_file:
       - ./.shelf-back.env
     environment:
@@ -16,7 +16,7 @@ services:
       - edgedb
 
   shelf-worker:
-    image: fdooch/shelf-back:0.1.0-alpha.11
+    image: fdooch/shelf-back:0.1.0-alpha.12
     env_file:
       - ./.shelf-back.env
     volumes:
