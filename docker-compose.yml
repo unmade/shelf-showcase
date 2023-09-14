@@ -1,6 +1,6 @@
 services:
   shelf-back:
-    image: fdooch/shelf-back:0.1.0-alpha.12
+    image: fdooch/shelf-back:0.1.0-alpha.14
     env_file:
       - ./.shelf-back.env
     environment:
@@ -16,19 +16,19 @@ services:
       - edgedb
 
   shelf-worker:
-    image: fdooch/shelf-back:0.1.0-alpha.12
+    image: fdooch/shelf-back:0.1.0-alpha.14
     env_file:
       - ./.shelf-back.env
     volumes:
       - ./certs:/usr/src/shelf-back/certs
       - ./shelf-data:/usr/src/shelf-data
-    command: ["celery", "-A", "app.tasks", "worker", "-l", "INFO"]
+    command: ["arq", "app.worker.main.WorkerSettings"]
     depends_on:
       - edgedb
       - redis
 
   shelf-front:
-    image: fdooch/shelf-front:0.1.0-alpha.13
+    image: fdooch/shelf-front:0.1.0-alpha.14
     environment:
       - API_BASE_URL=http://localhost:8000
     ports:
@@ -37,7 +37,7 @@ services:
       - shelf-back
 
   edgedb:
-    image: edgedb/edgedb:2.5
+    image: edgedb/edgedb:3.3
     environment:
       - EDGEDB_SERVER_USER=edgedb
       - EDGEDB_PASSWORD=root
