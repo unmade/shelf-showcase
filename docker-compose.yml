@@ -1,6 +1,6 @@
 services:
   shelf-back:
-    image: fdooch/shelf-back:0.1.0-alpha.16
+    image: fdooch/shelf-back:0.1.0-alpha.17
     env_file:
       - ./.shelf-back.env
     environment:
@@ -16,7 +16,7 @@ services:
       - edgedb
 
   shelf-worker:
-    image: fdooch/shelf-back:0.1.0-alpha.16
+    image: fdooch/shelf-back:0.1.0-alpha.17
     env_file:
       - ./.shelf-back.env
     volumes:
@@ -28,7 +28,7 @@ services:
       - redis
 
   shelf-front:
-    image: fdooch/shelf-front:0.1.0-alpha.16
+    image: fdooch/shelf-front:0.1.0-alpha.17
     environment:
       - API_BASE_URL=http://localhost:8000
     ports:
@@ -48,6 +48,12 @@ services:
       - ./certs:/certs
     ports:
       - "5656:5656"
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"  # SMTP port
+      - "8025:8025"  # Web interface port
 
   redis:
     image: redis:alpine
